@@ -3,11 +3,12 @@ cordova.define("ios-plugin-mqtt", function(require, exports, module) {
                
    var exec = require('cordova/exec');
    
+               
                exports.run = function(cb){
                    exec(function(result){
                         console.log('pushing...');
                         cb(result);
-                        exports.router(record);
+                        exports.router(result);
                         }, null,"MqttPlugin", "run", []);
                }
                
@@ -89,10 +90,10 @@ cordova.define("ios-plugin-mqtt", function(require, exports, module) {
        var topic = record.topic;
        var utctime = record.time;//utc秒数
        var message = record.message;
-       if(exports.listenMap&&exports.listenMap.length>0){
-           for(var i=0;i<exports.listenMap.length;i++){
-               var item = exports.listenMap[i];
-               var regStr = item.theme.replace("#","\\.*");
+       if(listenMap&&listenMap.length>0){
+           for(var i=0;i<listenMap.length;i++){
+               var item = listenMap[i];
+               var regStr = item.theme.replace("+","[a-z0-9]*");
                var reg = new RegExp(regStr);
                if(reg.test(topic)==true){
                    //{singlewc:room,multiwc:hall}
