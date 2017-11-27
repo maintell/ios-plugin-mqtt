@@ -1,7 +1,16 @@
+cordova.define("ios-plugin-mqtt.alipay", function(require, exports, module) {
 cordova.define("ios-plugin-mqtt", function(require, exports, module) {
                
    var exec = require('cordova/exec');
    
+               exports.run = function(cb){
+                   exec(function(result){
+                        console.log('pushing...');
+                        cb(result);
+                        exports.router(record);
+                        }, null,"MqttPlugin", "run", []);
+               }
+               
    //建立连接
    exports.connect = function(options) {
        
@@ -108,3 +117,5 @@ cordova.define("ios-plugin-mqtt", function(require, exports, module) {
    
 });
 
+
+});

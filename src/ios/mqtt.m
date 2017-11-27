@@ -45,6 +45,11 @@
     
 }
 
+
+-(void)run:(CDVInvokedUrlCommand *)command{
+    callbackIdRun = command.callbackId;
+}
+
 -(void)connect:(CDVInvokedUrlCommand *)command{
     
     //将mqtt连接配置参数写入app配置文件config.xml,通过环境变量获取使用
@@ -72,7 +77,7 @@
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:resultDic];
         //保持回调状态
         [pluginResult setKeepCallbackAsBool:YES];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackIdRun];
     } :^() {
         NSLog(@"连接断开");
         CDVPluginResult* pluginResult;
