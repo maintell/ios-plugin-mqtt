@@ -81,7 +81,7 @@ static MyMqtt* _instance = nil;
     self.session.clientId = clientId;
     
     self.session.delegate = self;
-    
+    self.session.cleanSessionFlag = false;
     self.session.keepAliveInterval = alive;
     
     [self.session connectWithConnectHandler:^(NSError *error) {
