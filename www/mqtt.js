@@ -43,7 +43,7 @@ cordova.define("ios-plugin-mqtt", function(require, exports, module) {
                     exports.router(record);
                 }
             }
-        }, options.error, "MqttPlugin", "connect", [options.username,options.password,options.clientId,options.keepAlive,options.url,options.port]);
+            }, options.error, "MqttPlugin", "connect", [options.username,options.password,options.clientId,options.keepAlive,options.url,options.port, options.isCleanSession || true]);
    
    };
                

@@ -62,7 +62,8 @@
     int alive = [[command.arguments objectAtIndex:3] intValue];
     NSString* host = [command.arguments objectAtIndex:4];
     int port = [[command.arguments objectAtIndex:5] intValue];
-    NSLog(@"connect: %@ %@ %@ %d %@ %d",username,password,clientId,alive,host,port);
+    bool isCleanSession = [[command.arguments objectAtIndex:6] boolValue];
+    NSLog(@"connect: %@ %@ %@ %d %@ %d cleanSession is %d",username,password,clientId,alive,host,port, isCleanSession);
     
     [[MyMqtt mqttService] mqttConnect:^(NSDictionary *resultDic) {
         NSLog(@"连接结果：%@",resultDic);
@@ -94,7 +95,8 @@
      username:username
      password:password
      clientId:clientId
-     live:alive];
+     live:alive
+     isCleanSession:isCleanSession];
     
 }
 

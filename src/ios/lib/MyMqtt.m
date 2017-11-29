@@ -58,7 +58,8 @@ static MyMqtt* _instance = nil;
                   username:(NSString*)username
                   password:(NSString*)password
                   clientId:(NSString*)clientId
-                  live:(UInt16)alive{
+                  live:(UInt16)alive
+                  isCleanSession:(BOOL)isCleanSession{
     mqttReceived = received;
     mqttConnectLost = onConnectLost;
     
@@ -81,7 +82,8 @@ static MyMqtt* _instance = nil;
     self.session.clientId = clientId;
     
     self.session.delegate = self;
-    self.session.cleanSessionFlag = false;
+    self.session.cleanSessionFlag = isCleanSession;
+    
     self.session.keepAliveInterval = alive;
     
     [self.session connectWithConnectHandler:^(NSError *error) {
