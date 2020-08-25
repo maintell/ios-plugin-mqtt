@@ -6,7 +6,7 @@ _Thanks for 'MQTT-Client-Framework' library files from Mr ckrey.
 本Cordova插件是基于Mr ckrey的mqtt库构建的。_
 
 ## 安装插件（环境：安装nodejs引擎并安装cordova插件）
-cordova plugin add ios-plugin-mqtt
+cordova plugin add https://github.com/maintell/ios-plugin-mqtt.git
 
 ## 插件使用接口说明：
 
