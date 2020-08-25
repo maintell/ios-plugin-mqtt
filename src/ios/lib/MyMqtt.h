@@ -30,7 +30,8 @@ typedef void (^DisCallBack)(UInt16 result);
            username:(NSString*)username
            password:(NSString*)password
            clientId:(NSString*)clientId
-               live:(UInt16)alive;
+               live:(UInt16)alive
+     isCleanSession:(BOOL)isCleanSession;
 
 -(void) mqttDisConnect:(DisCallBack)callback;
 -(void) subscribeTopic:(NSString*)topic :(int)qos :(DisCallBack)subCallback;
